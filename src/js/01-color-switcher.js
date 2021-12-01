@@ -24,8 +24,14 @@ const color = {
   },
 };
 
-refs.start.addEventListener('click', () => color.start());
-refs.stop.addEventListener('click', () => color.stop());
+refs.start.addEventListener('click', () => {
+  refs.start.setAttribute('disabled', '');
+  color.start();
+});
+refs.stop.addEventListener('click', () => {
+  refs.start.removeAttribute('disabled');
+  color.stop();
+});
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
